@@ -1,25 +1,48 @@
-name: Feature
-description: 새로운 기능을 제안할 때 사용하세요.
-title: "[FEAT]: "
+name: 기능 요청
+description: 새로운 기능이나 개선 작업을 제안할 때 사용합니다.
 labels:
   - FEAT
 body:
-  - type: input
-    id: scope
+  - type: markdown
     attributes:
-      label: Scope
-      description: 변경되는 코드 영역(모듈, 패키지, 도메인 등)
-      placeholder: "예: auth, profile, billing"
+      value: |
+        이슈 제목은 제목형 한글 제목으로 작성합니다.
+        예: 자유게임 생성에 scheduledAt 계약 추가
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: 작업의 핵심을 짧게 요약해주세요.
+      placeholder: "예: 자유게임 생성 및 조회 흐름에 일정 계약을 추가합니다."
     validations:
       required: true
 
   - type: textarea
     id: description
     attributes:
-      label: 기능 설명
-      description: 제안하는 기능의 세부 내용 또는 해결하려는 문제를 간단히 작성하세요.
+      label: Description
+      description: 배경과 상세 내용을 작성해주세요.
       placeholder: |
-        - 문제점: 현재 SSO 미지원으로 기업 사용자 온보딩이 지연됩니다.
-        - 제안: OAuth2 Device Flow 지원 추가
+        현재 상황, 문제 배경, 필요한 기능 변경 사항을 작성해주세요.
     validations:
       required: true
+
+  - type: textarea
+    id: target
+    attributes:
+      label: Target
+      description: 완료 조건이나 기대 결과를 작성해주세요.
+      placeholder: |
+        - 생성 요청 반영
+        - 상세 조회 반영
+        - 검증 조건 충족
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: Reference
+      description: 관련 이슈, PR, 문서, 디자인 링크 등을 작성해주세요.
+      placeholder: "예: 관련 API 문서, 디자인 링크, 관련 이슈"

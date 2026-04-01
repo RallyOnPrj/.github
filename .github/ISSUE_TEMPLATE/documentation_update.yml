@@ -1,24 +1,48 @@
 name: 문서 개선
-description: 기존 문서를 수정하거나 개선할 때 사용하세요.
-title: "[DOCS]: "
+description: 문서 수정이나 운영 가이드 개선에 사용합니다.
 labels:
   - DOCUMENTATION
 body:
-  - type: input
-    id: document-location
+  - type: markdown
     attributes:
-      label: 문서 위치
-      description: 수정할 문서의 경로 또는 URL을 입력하세요.
-      placeholder: "예: docs/setup.md"
+      value: |
+        이슈 제목은 제목형 한글 제목으로 작성합니다.
+        예: infra 운영 런북 최신화
+
   - type: textarea
-    id: change-summary
+    id: summary
     attributes:
-      label: 변경 내용 요약
-      description: 어떤 부분을 어떻게 수정하거나 추가할지 설명하세요.
-      placeholder: "예: 설치 단계 최신화"
+      label: Summary
+      description: 작업의 핵심을 짧게 요약해주세요.
+      placeholder: "예: 운영 런북을 현재 배포 절차에 맞게 최신화합니다."
+    validations:
+      required: true
+
   - type: textarea
-    id: reason
+    id: description
     attributes:
-      label: 변경 이유
-      description: 해당 변경이 필요한 이유를 서술하세요.
-      placeholder: "예: 신규 옵션 추가로 문서 불일치"
+      label: Description
+      description: 배경과 상세 내용을 작성해주세요.
+      placeholder: |
+        현재 문서 상태, 불일치 지점, 필요한 수정 방향을 작성해주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: target
+    attributes:
+      label: Target
+      description: 완료 조건이나 기대 결과를 작성해주세요.
+      placeholder: |
+        - 문서 경로 최신화
+        - 절차 설명 보완
+        - 예시 명령 확인
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: Reference
+      description: 관련 이슈, PR, 문서, 스크린샷 등을 작성해주세요.
+      placeholder: "예: 대상 문서 경로, 관련 PR 링크"

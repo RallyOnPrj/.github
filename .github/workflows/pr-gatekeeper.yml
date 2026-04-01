@@ -19,11 +19,11 @@ jobs:
           }
 
           SUMMARY="${TITLE#*: }"
-          echo "$SUMMARY" | grep -Eq '(한다|합니다)$' && {
+          if echo "$SUMMARY" | grep -Eq '(한다|합니다)$'; then
             echo "PR title must use a title-style noun phrase."
             echo "Do not use sentence-ending forms like -한다 or -합니다."
             exit 1
-          }
+          fi
 
       - name: Validate PR body (요약 required)
         env:

@@ -1,34 +1,48 @@
-name: Build
-description: 빌드/CI 관련 변경 요청에 사용하세요.
-title: "[BUILD]: "
+name: 빌드/인프라
+description: 빌드, 배포, CI, 환경 설정 변경에 사용합니다.
 labels:
   - BUILD
 body:
-  - type: input
-    id: area
+  - type: markdown
     attributes:
-      label: 대상 영역
-      description: 변경되는 빌드/CI 영역을 적어주세요.
-      placeholder: "예: GitHub Actions, Docker, Gradle, npm"
+      value: |
+        이슈 제목은 제목형 한글 제목으로 작성합니다.
+        예: backend 운영 배포 워크플로 정리
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: 작업의 핵심을 짧게 요약해주세요.
+      placeholder: "예: production 배포 절차를 정리하고 검증 단계를 보강합니다."
     validations:
       required: true
+
   - type: textarea
-    id: change-summary
+    id: description
     attributes:
-      label: 변경 내용
-      description: 어떤 변경을 하려는지 요약하세요.
-      placeholder: "예: CI 캐시 추가로 빌드 시간 단축"
+      label: Description
+      description: 배경과 상세 내용을 작성해주세요.
+      placeholder: |
+        현재 설정, 문제 배경, 필요한 변경 사항을 작성해주세요.
     validations:
       required: true
+
   - type: textarea
-    id: reason
+    id: target
     attributes:
-      label: 변경 이유
-      description: 왜 필요한지 간단히 설명하세요.
-      placeholder: "예: 빌드 시간이 길어짐"
+      label: Target
+      description: 완료 조건이나 기대 결과를 작성해주세요.
+      placeholder: |
+        - workflow 정상 실행
+        - 배포 절차 단순화
+        - smoke test 기준 정리
+    validations:
+      required: true
+
   - type: textarea
-    id: impact
+    id: reference
     attributes:
-      label: 영향 및 테스트
-      description: 영향 범위와 확인할 테스트를 적어주세요.
-      placeholder: "예: GitHub Actions 워크플로 검증"
+      label: Reference
+      description: 관련 이슈, PR, 문서, 로그, 스크린샷 등을 작성해주세요.
+      placeholder: "예: 관련 PR 링크, 운영 문서, 배포 로그"

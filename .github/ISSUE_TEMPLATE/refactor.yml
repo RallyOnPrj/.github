@@ -1,30 +1,48 @@
-name: Refactor
-description: 리팩터링 제안 또는 작업 내용을 기록할 때 사용하세요.
-title: "[REFACTOR]: "
+name: 리팩터링
+description: 구조 개선이나 코드 정리에 사용합니다.
 labels:
   - REFACTOR
 body:
-  - type: input
-    id: scope
+  - type: markdown
     attributes:
-      label: Scope
-      description: 변경되는 코드 영역(모듈, 패키지, 도메인 등)
-      placeholder: "예: auth, profile, billing"
+      value: |
+        이슈 제목은 제목형 한글 제목으로 작성합니다.
+        예: auth origin 판별 로직 정리
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: 작업의 핵심을 짧게 요약해주세요.
+      placeholder: "예: 인증 경계 구조를 정리하고 중복 로직을 제거합니다."
     validations:
       required: true
+
   - type: textarea
     id: description
     attributes:
-      label: 리팩터링 내용
-      description: 무엇을 어떻게 개선하려는지 설명하세요.
+      label: Description
+      description: 배경과 상세 내용을 작성해주세요.
       placeholder: |
-        - 대상: auth/session
-        - 방향: 책임 분리 및 의존성 정리
+        현재 구조의 문제점, 개선 방향, 정리 대상 범위를 작성해주세요.
     validations:
       required: true
+
   - type: textarea
-    id: impact
+    id: target
     attributes:
-      label: 영향 및 테스트
-      description: 영향 범위와 필요한 테스트를 적어주세요.
-      placeholder: "예: auth 모듈 영향, 단위 테스트 실행"
+      label: Target
+      description: 완료 조건이나 기대 결과를 작성해주세요.
+      placeholder: |
+        - 책임 분리
+        - 테스트 유지
+        - 회귀 없는 구조 정리
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: Reference
+      description: 관련 이슈, PR, 문서, 설계 링크 등을 작성해주세요.
+      placeholder: "예: 관련 PR 링크, 아키텍처 문서"

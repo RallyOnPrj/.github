@@ -12,17 +12,24 @@ jobs:
         env:
           TITLE: ${{ github.event.pull_request.title }}
         run: |
-          echo "$TITLE" | grep -Eq '^(feat|fix|refactor|perf|chore|test)\([a-z\-]+\): .+' || {
+          echo "$TITLE" | grep -Eq '^(feat|fix|refactor|docs|chore|test|style): .+' || {
             echo "Invalid PR title format."
-            echo "Expected: <type>(<scope>): <summary>"
+            echo "Expected: <type>: <korean-title>"
             exit 1
           }
 
-      - name: Validate PR body (Summary required)
+          SUMMARY="${TITLE#*: }"
+          echo "$SUMMARY" | grep -Eq '(한다|합니다)$' && {
+            echo "PR title must use a title-style noun phrase."
+            echo "Do not use sentence-ending forms like -한다 or -합니다."
+            exit 1
+          }
+
+      - name: Validate PR body (요약 required)
         env:
           BODY: ${{ github.event.pull_request.body }}
         run: |
-          echo "$BODY" | grep -q "## Summary" || {
-            echo "PR body must contain a ## Summary section."
+          echo "$BODY" | grep -Eq '## (요약|Summary)' || {
+            echo "PR body must contain a ## 요약 or ## Summary section."
             exit 1
           }

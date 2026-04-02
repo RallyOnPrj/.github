@@ -1,0 +1,61 @@
+{
+  "repositories": [
+    "RallyOnPrj/.github",
+    "RallyOnPrj/backend",
+    "RallyOnPrj/frontend",
+    "RallyOnPrj/infra",
+    "RallyOnPrj/iOS"
+  ],
+  "labels": [
+    {
+      "name": "BUG",
+      "color": "d73a4a",
+      "description": "버그를 보고하거나 수정합니다."
+    },
+    {
+      "name": "TRIAGE",
+      "color": "fbca04",
+      "description": "초기 분류와 확인이 필요합니다."
+    },
+    {
+      "name": "BUILD",
+      "color": "1d76db",
+      "description": "빌드, 배포, CI, 환경 설정 변경에 사용합니다."
+    },
+    {
+      "name": "DOCUMENTATION",
+      "color": "0075ca",
+      "description": "문서 추가 또는 문서 내용을 수정합니다."
+    },
+    {
+      "name": "FEAT",
+      "color": "f8ca83",
+      "description": "새로운 기능을 추가합니다. (기존 동작 변경 제외)"
+    },
+    {
+      "name": "REFACTOR",
+      "color": "e9079f",
+      "description": "기능 변경 없이 코드 구조를 개선합니다."
+    }
+  ],
+  "migrations": [
+    {
+      "repository": "RallyOnPrj/backend",
+      "aliases": [
+        {
+          "from": "documentation",
+          "to": "DOCUMENTATION"
+        }
+      ]
+    },
+    {
+      "repository": "RallyOnPrj/frontend",
+      "aliases": [
+        {
+          "from": "DOCS",
+          "to": "DOCUMENTATION"
+        }
+      ]
+    }
+  ]
+}

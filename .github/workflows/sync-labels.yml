@@ -1,0 +1,41 @@
+name: Sync Shared Labels
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/labels.json"
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/workflows/sync-labels.yml"
+      - ".github/scripts/sync-labels.mjs"
+
+permissions:
+  contents: read
+
+jobs:
+  sync-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate token availability
+        env:
+          LABEL_SYNC_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
+        run: |
+          if [ -z "$LABEL_SYNC_TOKEN" ]; then
+            echo "LABEL_SYNC_TOKEN secret is required." >&2
+            exit 1
+          fi
+
+      - name: Sync canonical labels
+        env:
+          LABEL_SYNC_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
+        run: node .github/scripts/sync-labels.mjs
